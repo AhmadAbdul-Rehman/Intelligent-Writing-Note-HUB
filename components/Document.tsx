@@ -6,6 +6,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/firebase";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { toast, ToastContainer } from "react-toastify";
+import Editor from "./Editor";
 
 const Document = ({ id }: { id: string }) => {
     const [data, loading, error] = useDocumentData(doc(db, "documents", id));
@@ -85,8 +86,22 @@ const Document = ({ id }: { id: string }) => {
                         >
                             {isUpdating ? "Updating..." : "Update Title"}
                         </Button>
+                        {/* If */}
+                        {/* isOwner && InviteUser, DeleteDocument */}
                     </form>
                 </div>
+                <div>
+                    {/* ManageUsers */}
+
+
+                    {/* Avatars */}
+                </div>
+
+                <hr className="pb-5" />
+
+                {/* Collaborative Editor */}
+
+                <Editor />
             </div>
         </>
     );
