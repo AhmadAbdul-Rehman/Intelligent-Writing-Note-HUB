@@ -66,7 +66,7 @@ const Document = ({ id }: { id: string }) => {
     return (
         <>
             <ToastContainer />
-            <div className="w-full">
+            <div className="w-full flex-1 h-full bg-white p-5">
                 <div className="flex max-w-5xl mx-auto justify-between pb-5">
                     <form
                         onSubmit={updateTitle}

@@ -4,7 +4,6 @@ import React, { Fragment } from "react";
 import {
     Breadcrumb,
     BreadcrumbItem,
-    BreadcrumbLink,
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator,
@@ -19,8 +18,8 @@ const Breadcrumbs = () => {
         <Breadcrumb>
             <BreadcrumbList>
                 <BreadcrumbItem>
-                    <Link href={"/"}>
-                        <BreadcrumbLink>Home</BreadcrumbLink>
+                    <Link href={"/"} className="breadcrumb-link">
+                        Home
                     </Link>
                 </BreadcrumbItem>
                 {segments.map((segment, index) => {
@@ -34,10 +33,8 @@ const Breadcrumbs = () => {
                                 {isLast ? (
                                     <BreadcrumbPage>{segment}</BreadcrumbPage>
                                 ) : (
-                                    <Link href={href}>
-                                        <BreadcrumbLink>
-                                            {segment}
-                                        </BreadcrumbLink>
+                                    <Link href={href} className="breadcrumb-link">
+                                        {segment}
                                     </Link>
                                 )}
                             </BreadcrumbItem>

@@ -16,8 +16,8 @@ const FollowPointer = ({
         <motion.div
             className="h-4 w-4 rounded-full absolute z-50"
             style={{
-                top: y,
-                left: x,
+                top: y, 
+                left: x, 
                 pointerEvents: "none",
             }}
             initial={{ scale: 1, opacity: 1 }}
