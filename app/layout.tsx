@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -30,6 +31,7 @@ export default function RootLayout({
                         </div>
                     </div>
                     <ToastContainer />
+                    <Toaster />
                 </body>
             </html>
         </ClerkProvider>

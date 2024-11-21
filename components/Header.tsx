@@ -10,6 +10,8 @@ import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Breadcrumbs from "./Breadcrumbs";
+import Image from "next/image";
+import logo from "../public/hink.png";
 
 function Header() {
     const { user, isLoaded, isSignedIn } = useUser();
@@ -20,7 +22,7 @@ function Header() {
             <div className="flex items-center justify-between p-5 uppercase font-semibold tracking-tighter">
                 {/* Show Skeleton for title */}
                 <Skeleton width={150} height={30} />
-                
+
                 {/* Show Skeleton for the UserButton */}
                 <Skeleton width={40} height={40} circle={true} />
 
@@ -32,15 +34,7 @@ function Header() {
     return (
         <div className="flex items-center justify-between p-5 uppercase font-semibold tracking-tighter">
             {/* User's name when signed in */}
-            {isSignedIn ? (
-                <h1 className="text-2xl">
-                    {user?.firstName}
-                    {`'s`} Space
-                </h1>
-            ) : (
-                // Skeleton for title when user is not signed in
-                <h1>No User SignIn</h1>
-            )}
+            <Image src={logo} className="w-40" alt="logo" />
 
             {/* Breadcrumbs area with SignIn or UserButton */}
             <Breadcrumbs />
@@ -49,7 +43,7 @@ function Header() {
                     <SignInButton />
                 </SignedOut>
                 <SignedIn>
-                    <UserButton />
+                        <UserButton />
                 </SignedIn>
             </div>
         </div>
