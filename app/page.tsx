@@ -34,7 +34,7 @@ export default function Home() {
                 <header className="p-4">
                     {isSignedIn ? (
                         <h1 className="font-semibold text-black text-2xl text-center">
-                            {greet}, {user?.fullName}
+                            {greet}, {user?.firstName} 
                         </h1>
                     ) : (
                         <h1 className="text-gray-500 text-center text-xl">

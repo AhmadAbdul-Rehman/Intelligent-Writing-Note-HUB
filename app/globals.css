@@ -64,3 +64,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  background: rgba(255, 246, 246, 0.406);
+}
+::-webkit-scrollbar-thumb {
+  background: black;
+}

@@ -78,7 +78,7 @@ export async function deleteDocument(roomId: string) {
 export async function inviteUserToDocument(roomId: string, email: string) {
     auth.protect();
     const { sessionClaims } = await auth();
-    
+
     if (sessionClaims?.email === email) {
         return {
             success: false,
@@ -100,6 +100,26 @@ export async function inviteUserToDocument(roomId: string, email: string) {
                 createdAt: new Date(),
                 roomId,
             });
+
+        return { success: true };
+    } catch (error) {
+        console.error(error);
+        return { success: false };
+    }
+}
+
+export async function removeUserFromDocument(roomId: string, email: string) {
+    auth.protect();
+
+    console.log("Remove user from Document", roomId, email);
+
+    try {
+        await adminDb
+            .collection("users")
+            .doc(email)
+            .collection("rooms")
+            .doc(roomId)
+            .delete();
 
         return { success: true };
     } catch (error) {

@@ -12,6 +12,8 @@ import DelteDocument from "./DeleteDocument";
 import { Smile } from "lucide-react";
 import EmojiPicker, { EmojiClickData } from "emoji-picker-react";
 import InviteUser from "./InviteUser";
+import ManageUsers from "./ManageUsers";
+import Avatars from "./Avatars";
 
 const Document = ({ id }: { id: string }) => {
     if (!id) {
@@ -64,7 +66,7 @@ const Document = ({ id }: { id: string }) => {
 
     return (
         <>
-            <div className="w-full flex-1 h-full bg-white p-5">
+            <div className="w-full flex-1 h-full bg-red-500 p-5">
                 <div className="flex max-w-5xl mx-auto justify-between pb-5">
                     <form
                         onSubmit={updateTitle}
@@ -97,6 +99,12 @@ const Document = ({ id }: { id: string }) => {
                         >
                             {isUpdating ? "Updating..." : "Update Title"}
                         </Button>
+                        {showEmojiPicker && (
+                            <div className="absolute top-full mt-3 z-10 right-1/4">
+                                {/* Emoji Picker Component */}
+                                <EmojiPicker onEmojiClick={handleEmojiClick} />
+                            </div>
+                        )}
                     </form>
                     <div className="flex gap-1 px-1">
                         {isOwner && (
@@ -105,15 +113,15 @@ const Document = ({ id }: { id: string }) => {
                                 <DelteDocument />
                             </>
                         )}
-                        {showEmojiPicker && (
-                            <div className="absolute top-full mt-3 z-10 right-1/4">
-                                {/* Emoji Picker Component */}
-                                <EmojiPicker onEmojiClick={handleEmojiClick} />
-                            </div>
-                        )}
                     </div>
                 </div>
-                <hr className="pb-5" />
+                <div className="flex max-w-6xl mx-auto justify-between items-center mb-5">
+                    {/* ManageUsers */}
+                    <ManageUsers />
+                    {/* Avatars */}
+                    <Avatars />
+                </div>
+                <hr className="pb-10" />
 
                 {/* Collaborative Editor */}
                 <Editor />
