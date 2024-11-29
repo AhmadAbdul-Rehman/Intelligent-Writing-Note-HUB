@@ -2,7 +2,7 @@ import { db } from "@/firebase";
 import { useUser } from "@clerk/nextjs";
 import { useRoom } from "@liveblocks/react";
 import { collectionGroup, query, where } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 const useOwner = () => {

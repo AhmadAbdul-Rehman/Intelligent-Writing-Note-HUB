@@ -1,8 +1,5 @@
 "use client";
-import Header from "@/components/Header";
-import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/nextjs";
-import { ArrowLeftCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import DocPage from "./doc/page";
 

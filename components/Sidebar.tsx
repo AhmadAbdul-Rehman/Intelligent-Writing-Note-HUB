@@ -15,7 +15,7 @@ import { useUser } from "@clerk/nextjs";
 
 const Sidebar = () => {
     const { owner, editor } = useDocuments();
-    const { user, isLoaded, isSignedIn } = useUser(); // Using our custom hook to get grouped data
+    const { user, isSignedIn } = useUser(); // Using our custom hook to get grouped data
 
     const menuOptions = (
         <>

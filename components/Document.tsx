@@ -16,14 +16,10 @@ import ManageUsers from "./ManageUsers";
 import Avatars from "./Avatars";
 
 const Document = ({ id }: { id: string }) => {
-    if (!id) {
-        return <div>Invalid Document ID</div>; // Guard against invalid IDs
-    }
-
-    const [data, loading, error] = useDocumentData(doc(db, "documents", id));
     const [input, setInput] = useState("");
     const [isUpdating, startTransition] = useTransition();
     const isOwner = useOwner();
+    const [data] = useDocumentData(doc(db, "documents", id));
     const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
     useEffect(() => {
@@ -45,7 +41,7 @@ const Document = ({ id }: { id: string }) => {
                     });
 
                     toast.success("Title updated successfully!");
-                } catch (error) {
+                } catch {
                     toast.error("Failed to update title. Try again!");
                 }
             });

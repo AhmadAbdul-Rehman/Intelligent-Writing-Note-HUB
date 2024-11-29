@@ -14,7 +14,8 @@ import Image from "next/image";
 import logo from "../public/hink.png";
 
 function Header() {
-    const { user, isLoaded, isSignedIn } = useUser();
+    // const { user, isLoaded, isSignedIn } = useUser();
+    const { isLoaded} = useUser();
 
     // If user data is still loading, display skeletons for all parts of the header
     if (!isLoaded) {

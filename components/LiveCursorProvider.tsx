@@ -1,11 +1,10 @@
 "use client";
 import React from "react";
-
 import { useMyPresence, useOthers } from "@liveblocks/react/suspense";
 import FollowPointer from "./FollowPointer";
 
 const LiveCursorProvider = ({ children }: { children: React.ReactNode }) => {
-    const [myPresence, updateMyPresence] = useMyPresence();
+    const [, updateMyPresence] = useMyPresence(); // Omit `myPresence`
     const others = useOthers();
 
     const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {

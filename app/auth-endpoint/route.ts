@@ -2,7 +2,6 @@ import { adminDb } from "@/firebase-admin";
 import liveblocks from "@/lib/liveblocks";
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
-import { collectionGroup } from "firebase/firestore";
 
 export async function POST(req: NextRequest) {
     auth.protect();
@@ -10,17 +9,24 @@ export async function POST(req: NextRequest) {
     const { sessionClaims } = await auth();
     const { room } = await req.json();
 
-    const session = liveblocks.prepareSession(sessionClaims?.email!, {
+    if (!sessionClaims?.email) {
+        return NextResponse.json(
+            { message: "Unauthorized: Email is missing from session claims." },
+            { status: 401 }
+        );
+    }
+
+    const session = liveblocks.prepareSession(sessionClaims.email, {
         userInfo: {
-            name: sessionClaims?.fullName!,
-            email: sessionClaims?.email!,
-            avatar: sessionClaims?.image!,
+            name: sessionClaims.fullName || "Unknown User", // Use default value if null/undefined
+            email: sessionClaims.email, // Already checked above
+            avatar: sessionClaims.image || "", // Provide a fallback for avatar
         },
     });
 
     const usersInRoom = await adminDb
         .collectionGroup("rooms")
-        .where("userId", "==", sessionClaims?.email)
+        .where("userId", "==", sessionClaims.email)
         .get();
 
     const userInRoom = usersInRoom.docs.find((doc) => doc.id === room);
@@ -32,7 +38,7 @@ export async function POST(req: NextRequest) {
         return new Response(body, { status });
     } else {
         return NextResponse.json(
-            { message: "Your are not in this room." },
+            { message: "You are not in this room." },
             { status: 403 }
         );
     }

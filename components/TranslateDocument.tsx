@@ -1,7 +1,6 @@
 "use client";
 import React, {
     FormEvent,
-    startTransition,
     useState,
     useTransition,
 } from "react";
@@ -9,10 +8,8 @@ import React, {
 import * as Y from "yjs";
 import {
     Dialog,
-    DialogClose,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -60,7 +57,6 @@ const TranslateDocument = ({ doc }: { doc: Y.Doc }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [language, setLanguage] = useState<string>("");
     const [smummary, setSmummary] = useState("");
-    const [question, setQuestion] = useState("");
     const [isPending, startTransition] = useTransition();
 
     const handleAskQuestion = (e: FormEvent) => {
@@ -112,9 +108,6 @@ const TranslateDocument = ({ doc }: { doc: Y.Doc }) => {
 
                         <hr className="mt-5" />
 
-                        {question && (
-                            <p className="mt-5 text-gray-500">Q : {question}</p>
-                        )}
                     </DialogHeader>
                     {smummary && (
                         <div className="flex flex-col item-start max-h-96 overflow-y-scroll gap-2 p-5 bg-gray-100 ">

@@ -3,10 +3,11 @@ import { collectionGroup, query, where } from "firebase/firestore";
 import { db } from "@/firebase";
 import { useUser } from "@clerk/nextjs";
 import { useState, useEffect } from "react";
+import { Timestamp } from "firebase/firestore"; // Import Firebase Timestamp
 
-// Define the RoomDocument type, but do not include `id` here
+// Define the RoomDocument type, with `createdAt` as Timestamp
 interface RoomDocument {
-  createdAt: string;
+  createdAt: Timestamp; // Firebase Timestamp
   role: "owner" | "editor";
   roomId: string;
   userId: string;
@@ -56,7 +57,7 @@ export const useDocuments = () => {
       } else {
         acc.editor.push(docWithId);
       }
-      
+
       return acc;
     }, {
       owner: [],
