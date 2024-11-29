@@ -62,7 +62,7 @@ const Document = ({ id }: { id: string }) => {
 
     return (
         <>
-            <div className="w-full flex-1 h-full bg-red-500 p-5">
+            <div className="w-full flex-1 h-full bg-white p-5">
                 <div className="flex max-w-5xl mx-auto justify-between pb-5">
                     <form
                         onSubmit={updateTitle}
