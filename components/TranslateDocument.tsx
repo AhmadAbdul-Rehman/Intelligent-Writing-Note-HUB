@@ -1,5 +1,9 @@
 "use client";
-import React, { FormEvent, useState, useTransition } from "react";
+import React, {
+    FormEvent,
+    useState,
+    useTransition,
+} from "react";
 
 import * as Y from "yjs";
 import {
@@ -101,6 +105,7 @@ const TranslateDocument = ({ doc }: { doc: Y.Doc }) => {
                         </DialogDescription>
 
                         <hr className="mt-5" />
+
                     </DialogHeader>
                     {smummary && (
                         <div className="flex flex-col item-start max-h-96 overflow-y-scroll gap-2 p-5 bg-gray-100 ">
